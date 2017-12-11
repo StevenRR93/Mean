@@ -1,0 +1,9 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+<ng-template ngFor let-item [ngForOf]="createRange(num)" let-currentElementIndex="(index + 1)" [ngForTrackBy]="trackByFn">
+  <div class = 'box' [ngStyle]="{'background-color': colorscheme[rand()]}"></div>  
+</ng-template>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">    
+        <title>New Cat</title>
+        <!-- <link rel="stylesheet" href="css/styles.css">     -->
+    </head>
+    <body>
+        <% if(typeof(errors) != 'undefined' ) { %>
+            <% for (var x in errors) { %>
+             <h3><%= errors[x].message %></h3>
+            <% } %>
+        <% } %>
+        <h1></h1>
+        <form action="/cat/<%= cats._id %>" method="POST">
+            <label>Name:</label> 
+            <input type="text" name = "name" value="<%= cats.name %>"><br><br>
+            <label>Breed:</label> 
+            <input type="text" name = "breed" value="<%= cats.breed %>"><br><br>
+            <label>Description:</label> 
+            <input type="text" name = "description" value="<%= cats.description %>"><br><br>
+            <label>Weight (in lbs):</label> 
+            <input type="number" name = "weight" value="<%= cats.weight %>"><br><br>
+            <input type="submit" value="Edit my Cat">
+          </form><br>
+          <a href = "/" method = "get">Go Home</a>
+    </body>

@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}
+  </h1>
+</div>
+<div style="text-align:center">
+  <h2>
+    <span> Your current time: {{ now }}</span>
+  </h2>
+</div>
+<div style="text-align:center">
+  <button *ngIf="clicked!=='PST'" (click)="PST()">PST</button>
+  <button *ngIf="clicked==='PST'" class="selected" >PST</button>
+  
+  <button *ngIf="clicked!=='MST'" (click)='MST()'>MST</button>
+  <button *ngIf="clicked==='MST'" class="selected" >MST</button>
+
+  <button *ngIf="clicked!=='CST'" (click)='CST()'>CST</button>
+  <button *ngIf="clicked==='CST'" class="selected" >CST</button>
+
+  <button *ngIf="clicked!=='EST'" (click)='EST()'>EST</button>
+  <button *ngIf="clicked==='EST'" class="selected">EST</button>
+
+  <button *ngIf="clicked!=='clear'" (click)='clear()'>Clear</button>
+  <button *ngIf="clicked==='clear'" class="selected">Clear</button>
+</div>
+
+ <div style="text-align:center">
+  <h1>
+    {{ now | date: display : time }}
+  </h1>
+</div>
+
+

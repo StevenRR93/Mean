@@ -1,0 +1,25 @@
+<!doctype html>            
+<html lang="en">
+    <head>
+        <meta charset="utf-8">    
+        <title>Cat Index</title>
+        <!-- <link rel="stylesheet" href="css/styles.css">     -->
+    </head>
+    <body>
+        <a href="/cats/new">Add a New Cat</a>    
+        <h1>Here are the current Cats:</h1>
+        <% if (cats.length === 0){ %>
+            <h2>No cats to display</h2>
+        <% } %>
+        <% for(var i = 0; i < cats.length; i++) { %>
+            <h4>Name: <a href = "/cat/<%= cats[i]._id %>"><%= cats[i].name %></a><h4>
+            <h4> Breed: <%= cats[i].breed %></h4>
+            <h4> Description: <%= cats[i].description %></h4>
+            <h4> Weight (in lbs): <%= cats[i].weight %></h4>
+            <a href = "/cat/edit/<%= cats[i]._id %>" >edit</a> |
+            <form action="/cat/destroy/<%= cats[i]._id %>" method="post">
+                <button type="submit" name="Delete" value="Delete" class="btn-link">Delete</button>
+            </form>
+        <% } %>
+    </body>
+</html>
