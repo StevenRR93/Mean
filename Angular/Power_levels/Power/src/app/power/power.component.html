@@ -1,0 +1,35 @@
+<div id = 'powerarea'>
+<p>
+  PowerComponent
+</p>
+{{ logdata }}
+<div id = "level">
+  <form novalidate #form="ngForm" (submit)="PowerChange(form)">
+    <span>Initial Power Level:</span> <input type="number" name = "pl" [ngModel]="powerlevel" min="0" max="100">
+    <input type="submit" value="submit">
+  </form>
+<br>
+</div>
+<div id = "top">
+<div class = "level">
+  <app-human [hlevel]="powerlevel" ></app-human> <!-- (aTaskEventEmitter)="dataFromChild($event)" -->
+</div>
+<div class = "level">
+  <app-saiyan [slevel]="powerlevel"></app-saiyan>
+</div>
+<div class = "level">
+  <app-super-saiyan [sslevel]="powerlevel"></app-super-saiyan>
+</div>
+</div>
+<div id = "bottom">
+<div class = "level">
+  <app-super-saiyan-two [ss2level]="powerlevel"></app-super-saiyan-two>
+</div>
+<div class = "level">
+  <app-super-saiyan-three [ss3level]="powerlevel"></app-super-saiyan-three>
+</div>
+<div class = "level">
+  <app-super-saiyan-four [ss4level]="powerlevel"></app-super-saiyan-four>
+</div>
+</div>
+</div>

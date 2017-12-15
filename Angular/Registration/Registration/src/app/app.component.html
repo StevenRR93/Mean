@@ -1,0 +1,168 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{ title }}!
+  </h1>
+</div>
+<div>
+    <p *ngIf="person">Thank you for registering with us {{ person.first_name }}! We just sent you a confirmation e-mail</p>
+    <p *ngIf="person">at {{ person.email }}, and we will send all mail to {{ person.street }} {{person.apartment}},</p>
+    <p *ngIf="person">{{ person.city }}, {{ person.state }}. Have a wonderful day!</p>
+</div>
+<form #form="ngForm" novalidate (submit)="onSubmit(form.value, form.valid)">
+    <span>*First Name</span>
+    <input 
+      type="text" 
+      name="first_name" 
+      required 
+      minlength="3" 
+      maxlength="24"
+      [(ngModel)]="user.first_name"
+      #first_name='ngModel'
+    />
+    <span [hidden]="first_name.valid || (first_name.pristine && !form.valid)">
+        First name is required.
+    </span>
+    <br><br>
+    <span>*Last Name</span>
+    <input 
+      type="text" 
+      name="last_name" 
+      required 
+      minlength="4" 
+      maxlength="24"
+      [(ngModel)]="user.last_name"
+      #last_name='ngModel'
+    /><span [hidden]="last_name.valid || (last_name.pristine && !form.valid)">
+        Last name is required.
+    </span>
+    <br><br>
+    <span>*E-mail Address</span>
+    <input 
+    type="text" 
+    name="email" 
+    required 
+    minlength="3" 
+    maxlength="24"
+    [(ngModel)]="user.email"
+    #email='ngModel'
+    />
+    <span [hidden]="email.valid || (email.pristine && !form.valid)">
+        E-mail must be valid.
+    </span>
+    <br><br>
+    <span>*Password</span>
+    <input 
+      type="password" 
+      name="password" 
+      required 
+      minlength="8" 
+      maxlength="24"
+      pattern="^([a-zA-Z0-9@*#]{8,15})$"
+      [(ngModel)]="user.password"
+      #password='ngModel'
+    />
+    <span [hidden]="password.valid || (password.pristine && !form.valid)">
+        Password must be more than 8 characters
+    </span>
+    <br><br>
+    <label value="Password">*Password Confirm</label>
+    <input 
+      type="password" 
+      name="confirmPassword" 
+      required 
+      match-password="password"
+      validateEqual="password"
+      [(ngModel)]="user.confirmPassword"
+      #confirmPassword='ngModel'
+    />
+    <span [hidden]="confirmPassword.valid ||  (confirmPassword.pristine && !form.valid)">
+      Password confirmation must match password
+    </span>
+    <br><br>
+    <span>*Street</span>
+    <input 
+    type="text" 
+    name="street" 
+    required 
+    minlength="2" 
+    maxlength="25"
+    [(ngModel)]="user.street"
+    #street='ngModel'
+    />
+    <span [hidden]="street.valid || (street.pristine && !form.valid)">
+        Street is required
+    </span>
+    <br><br>
+    <span>Unit/Apt #</span>
+    <input 
+    type="text" 
+    name="apartment" 
+    [(ngModel)]="user.apartment"
+    #apartment='ngModel'
+    />
+    <br><br>
+    <span>*City</span>
+    <input 
+    type="text" 
+    name="city" 
+    required 
+    minlength="2" 
+    maxlength="25"
+    [(ngModel)]="user.city"
+    #city='ngModel'
+    />
+    <span [hidden]="city.valid || (city.pristine && !form.valid)">
+        City is required
+    </span>
+    <br><br>
+    <span>*State</span>
+    <input 
+    type="text" 
+    name="state" 
+    required 
+    minlength="3" 
+    maxlength="25"
+    [(ngModel)]="user.state"
+    #state='ngModel'
+    />
+    <span [hidden]="state.valid || (state.pristine && !form.valid)">
+        State is required
+    </span>
+    <br><br>
+    <span>*I'm Feeling lucky</span>
+    <input 
+    type="radio" 
+    name="lucky" 
+    required 
+    value= 'true'
+    [(ngModel)]="user.lucky"
+    #lucky='ngModel'
+    /><span>Yes</span>
+    <input 
+    type="radio" 
+    name="lucky" 
+    required 
+    value= 'false'
+    [(ngModel)]="user.lucky"
+    #lucky='ngModel'
+    /><span>No</span>
+    <span [hidden]="lucky.valid || (lucky.pristine && !form.valid)">
+        Choosing how you feel is required.
+    </span>
+    <br><br>
+    <button *ngIf="!form.valid" disabled>Submit</button>
+    <button type="submit" *ngIf="form.valid">Submit</button>
+  </form>
+<!-- public id: number = null,
+public first_name: string = "",
+public last_name: string = "",
+public email: string = "",
+public password: string = "",
+public street: string = "",
+public apartment: string = "",
+public city: string = "",
+public state: string = "",
+public lucky: boolean = false,
+public created_at: Date = new Date(),
+public updated_at: Date = new Date() -->

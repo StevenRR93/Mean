@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div>
+    <h2>
+        Add a Quote!
+      </h2>
+      <form #form="ngForm" novalidate (submit)="QuoteSubmit(form.value, form.valid)">
+        <span>Quote</span>
+        <textarea cols="30" rows="5" style="overflow:hidden"
+          type="text" 
+          name="info" 
+          required 
+          minlength="4" 
+          maxlength="100"
+          [(ngModel)]="quote.info"
+          #info='ngModel'
+        ></textarea>
+        <span [hidden]="info.valid || (info.pristine && !form.valid)">
+            You must enter a quote. (Over 4 characters)
+        </span>
+        <br><br>
+        <span>Author</span>
+        <input 
+          type="text" 
+          name="author" 
+          required 
+          minlength="1" 
+          maxlength="24"
+          [(ngModel)]="quote.author"
+          #author='ngModel'
+        />
+        <span [hidden]="author.valid || (author.pristine && !form.valid)">
+          You must enter an author. (Over 4 characters)
+        </span>
+        <button type = "button" *ngIf = "!form.valid" disabled>Submit</button>
+        <input *ngIf = "form.valid" type = "submit" value = "Submit"/>
+      </form>
+<app-list [quotes] = "quotes" (anEventEmitter)="something($event)"></app-list>
+</div>

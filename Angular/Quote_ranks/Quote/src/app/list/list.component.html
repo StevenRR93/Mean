@@ -1,0 +1,12 @@
+<h1>Quotes List</h1>
+<div *ngIf = "quotes.length === 0">
+  <h3> No quotes to display </h3>
+</div>
+<div *ngIf = "quotes.length !== 0" >
+  <div *ngFor = "let q of quotes">
+    <p>{{q.id}}{{q.info}} - by "{{q.author}}" Votes: {{q.upvotes - q.downvotes}} </p>
+    <form (submit)="upvoteit(q.id)"><button type = "submit">Upvote</button></form>
+    <form (submit)="downvoteit(q.id)"><button type = "submit">DownVote</button></form>
+    <form (submit)="delete(q.id)"><button type = "submit">Delete</button></form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+#top{
+    display: block;
+}
+#bottom{
+    display: block;
+}
+.level{
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+}
