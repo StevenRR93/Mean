@@ -1,0 +1,7 @@
+<div>
+  <h4>Github Username:</h4>
+  <form #form="ngForm" (submit)="retrieveScore()">
+    <input type="text" name="username" placeholder="Github Username" required minlength="1" [(ngModel)]='username[0]'><br><br>
+    <button type="submit" [disabled]="!form.valid">Calculate my Github Score</button>
+  </form>
+</div>
